@@ -7,23 +7,67 @@
 </head>
 <body>
     <script>
-        const number = prompt("Введи трицифрове число:");
+(function () {
+  const currentYear = new Date().getFullYear();
 
-        if (number.length === 3 && !isNaN(number)) {
-    const a = number[0];
-    const b = number[1];
-    const c = number[2];
+  const birthYear = prompt("Введіть ваш рік народження:");
+  if (birthYear === null) {
+    alert("Шкода, що Ви не захотіли ввести свій рік народження.");
+    return;
+  }
 
-    if (a === b && b === c) {
-        alert("Усі цифри однакові.");
-    } else if (a === b || a === c || b === c) {
-        alert("Є однакові цифри.");
-    } else {
-        alert("Усі цифри різні.");
-    }
-    } else {
-    alert("Будь ласка, введи коректне трицифрове число.");
-}
+  let city = prompt("В якому місті ви живете?");
+  if (city === null) {
+    alert("Шкода, що Ви не захотіли ввести своє місто.");
+    return;
+  }
+
+  let sport = prompt("Ваш улюблений вид спорту?");
+  if (sport === null) {
+    alert("Шкода, що Ви не захотіли ввести свій улюблений вид спорту.");
+    return;
+  }
+
+  // слово з великої букви
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  // форматування введених даних
+  city = capitalize(city.trim());
+  sport = capitalize(sport.trim());
+
+  // обчислення віку
+  const age = currentYear - parseInt(birthYear);
+
+  // столиці
+  const capitals = {
+    "Київ": "України",
+    "Вашингтон": "США",
+    "Лондон": "Великої Британії"
+  };
+
+  // чемпіони спорту
+  const champions = {
+    "Бокс": "Олександр Усик",
+    "Футбол": "Ліонель Мессі",
+    "Теніс": "Новак Джокович"
+  };
+
+  // Повідомлення про місто
+  const cityMessage = capitals[city]
+    ? `Ти живеш у столиці ${capitals[city]}.`
+    : `Ти живеш у місті ${city}.`;
+
+  // Повідомлення про спорт
+  const sportMessage = champions[sport]
+    ? `Круто! Хочеш стати як ${champions[sport]}?`
+    : "";
+
+  // Остаточне повідомлення
+  const finalMessage = `Твій вік: ${age}\n${cityMessage}\n${sportMessage}`;
+  alert(finalMessage);
+})();
     </script>
 </body>
 </html>
