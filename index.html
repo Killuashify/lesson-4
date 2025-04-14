@@ -7,9 +7,23 @@
 </head>
 <body>
     <script>
-      const userName = prompt("Як тебе звати?");
-      alert(`Hello, ${userName}! How are you?`);
+        const number = prompt("Введи трицифрове число:");
 
+        if (number.length === 3 && !isNaN(number)) {
+    const a = number[0];
+    const b = number[1];
+    const c = number[2];
+
+    if (a === b && b === c) {
+        alert("Усі цифри однакові.");
+    } else if (a === b || a === c || b === c) {
+        alert("Є однакові цифри.");
+    } else {
+        alert("Усі цифри різні.");
+    }
+    } else {
+    alert("Будь ласка, введи коректне трицифрове число.");
+}
     </script>
 </body>
 </html>
