@@ -7,67 +7,26 @@
 </head>
 <body>
     <script>
-(function () {
-  const currentYear = new Date().getFullYear();
+    const numOrStr = prompt('input number or string');
+console.log(numOrStr);
 
-  const birthYear = prompt("Введіть ваш рік народження:");
-  if (birthYear === null) {
-    alert("Шкода, що Ви не захотіли ввести свій рік народження.");
-    return;
-  }
+switch (true) {
+  case numOrStr === null:
+    console.log('ви скасували');
+    break;
 
-  let city = prompt("В якому місті ви живете?");
-  if (city === null) {
-    alert("Шкода, що Ви не захотіли ввести своє місто.");
-    return;
-  }
+  case numOrStr.trim() === '':
+    console.log('Empty String');
+    break;
 
-  let sport = prompt("Ваш улюблений вид спорту?");
-  if (sport === null) {
-    alert("Шкода, що Ви не захотіли ввести свій улюблений вид спорту.");
-    return;
-  }
+  case isNaN(+numOrStr):
+    console.log('number is Ba_NaN');
+    break;
 
-  // слово з великої букви
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  }
-
-  // форматування введених даних
-  city = capitalize(city.trim());
-  sport = capitalize(sport.trim());
-
-  // обчислення віку
-  const age = currentYear - parseInt(birthYear);
-
-  // столиці
-  const capitals = {
-    "Київ": "України",
-    "Вашингтон": "США",
-    "Лондон": "Великої Британії"
-  };
-
-  // чемпіони спорту
-  const champions = {
-    "Бокс": "Олександр Усик",
-    "Футбол": "Ліонель Мессі",
-    "Теніс": "Новак Джокович"
-  };
-
-  // Повідомлення про місто
-  const cityMessage = capitals[city]
-    ? `Ти живеш у столиці ${capitals[city]}.`
-    : `Ти живеш у місті ${city}.`;
-
-  // Повідомлення про спорт
-  const sportMessage = champions[sport]
-    ? `Круто! Хочеш стати як ${champions[sport]}?`
-    : "";
-
-  // Остаточне повідомлення
-  const finalMessage = `Твій вік: ${age}\n${cityMessage}\n${sportMessage}`;
-  alert(finalMessage);
-})();
+  default:
+    console.log('OK!');
+    break;
+}
     </script>
 </body>
 </html>
